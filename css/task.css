@@ -52,7 +52,6 @@
 
 
 .popup-list-container{
-    overflow-y: scroll;
     max-height: 250px;
 }
 .row-full-width{
@@ -69,6 +68,8 @@
     margin-bottom: 10px;
     margin-left: 0px;
     list-style: none;
+    max-height: 265px;
+    overflow: scroll;
 }
 .users-list > li {
     color: #24292e;
