@@ -1,0 +1,102 @@
+.github-users{
+    background-color: white;
+    min-height: 100px;
+    min-width: 300px;
+    float: right;
+    position: relative;
+    bottom: 50px;
+    right: 15%;
+    border: 2px solid #24292e;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+@keyframes animateBackground{
+    from{background-color: #24292e;}
+    to {background-color: white}
+}
+@keyframes animateTextToDark{
+    from{color: white}
+    to{color: #24292e}
+}
+@keyframes animateTextToWhite{
+    from{color: #24292e}
+    to{color: white}
+}
+
+.popup-header-container{
+    background-color: #24292e;
+    padding: 10px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+.popup-header-container:hover{
+    animation-name: animateBackground;
+    animation-duration: 0.5s;
+    background-color: white;
+    margin-bottom: 0px;
+}
+.popup-header-container:hover > h3 {
+    animation-name: animateTextToDark;
+    animation-duration: 0.5s;
+    color: #24292e;
+    margin-bottom: 0px;
+}
+.popup-header-container > h3 {
+    display: inline-block;
+    width: 70%;
+    color: white;
+    margin-bottom: 0px;
+}
+
+
+
+.popup-list-container{
+    overflow-y: scroll;
+    max-height: 250px;
+}
+.row-full-width{
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    height: 0px;
+    z-index: 10000;
+}
+
+
+
+.users-list{
+    margin-bottom: 10px;
+    margin-left: 0px;
+    list-style: none;
+}
+.users-list > li {
+    color: #24292e;
+    border-bottom:1px solid #24292e; 
+    background: white;
+    /* Old browsers */
+    background: linear-gradient(to right, #24292e 50%, white 50%);
+    background-size: 200% 100%;
+    background-position:right bottom;
+    transition:all 0.5s ease;
+}
+.users-list > li:hover{
+    animation-name: animateTextToWhite;
+    animation-duration: 0.1s;
+    color: white;
+    background-position: left bottom;
+
+}
+.users-list > li > a {
+    padding-left: 10px;
+    font-weight: 600;
+    color: inherit;
+}
+
+
+/*Pravila za novi tab*/
+.popup-user-details{
+    display: none;
+    min-height: 250px;
+    margin: 0px;
+}
