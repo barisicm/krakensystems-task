@@ -1,7 +1,6 @@
 function initialize() {
 
     generateAndInsertPopupHtml($("#preloader"));
-
     fetchUsersAndGenerateHtml(0);
 
     var popupActive=false;
@@ -21,19 +20,12 @@ function initialize() {
 
     var popupList = $('.users-list');
     popupList.scroll(function () {
-
-        console.log($('.user-selected-js').height() * $('.user-selected-js').length);
-        console.log($('.users-list').scrollTop());
-        console.log($('.users-list').outerHeight());
-
-
-
-
-        // if (popupList.scrollTop() > 550) {
-        //     //TODO:: fetch last user and his index, and call fetch Users
-        //     var lastUser = $('.user-selected-js').last().prop("id");
-        //     fetchUsersAndGenerateHtml(lastUser);
-        // }
+   
+        //TODO:: THIS !!!!
+        if($(this).scrollTop() + $(this).innerHeight() == $(this)[0].scrollHeight-1) {
+                var lastUser = $('.user-selected-js > a').length;
+                fetchUsersAndGenerateHtml(lastUser);
+        }
     });
 }
 
@@ -75,9 +67,10 @@ function fetchUsersAndGenerateHtml(lastUserIndex){
             console.log(jqXHR);
 
             var htmlUserItems="";
+            console.log(data);
             data.forEach(element => {
                 var userItem = `<li class="user-selected-js">
-                                    <a href="empty" id="`+ element.id +`">`+ element.login +`</a>
+                                    <a href="empty" id="`+ element.id +`" index="`+ "" +`">`+ element.login +`</a>
                                 </li>`;
                 htmlUserItems = htmlUserItems + userItem;
             });
