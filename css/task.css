@@ -102,6 +102,24 @@
 /*Pravila za novi tab*/
 .popup-user-details{
     display: none;
-    min-height: 250px;
+    min-height: 300px;
     margin: 0px;
+}
+
+.user-details-inner-container{
+    text-align: center;
+}
+
+.user-image{
+    width: 100px;
+    border-radius: 5px;
+}
+
+
+.no-margin{
+    margin: 0;
+}
+
+.float-right{
+    float: right;
 }

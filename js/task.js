@@ -8,7 +8,7 @@ function initialize() {
     var popupActive=false;
     $(".popup-header-container").click(function(){
         if(!popupActive){
-            $(".github-users").animate({bottom: "300px"},400, null);
+            $(".github-users").animate({bottom: "350px"},400, null);
             popupActive=true;
         } else {
             $(".github-users").animate({bottom: "50px"},400, null);
@@ -49,17 +49,22 @@ function generatePopupHtml(targetElement){
             </div>
             <div class="popup-user-details" style="display:block;">
                 <div class="user-details-inner-container">
-                    <img class="user-image" src="https://avatars0.githubusercontent.com/u/1?v=4"></img>
-                    <h3>Stats</h3>
-                    <div>
-                        <p>Public repos : </p>
-                        <p>repos</p>
+                    <div class="row">
+                        </br>
+                        <img class="user-image" src="https://avatars0.githubusercontent.com/u/1?v=4"></img>
+                        <h3 style="margin:0;">Stats</h3>
+                        </br>
                     </div>
-                    <div>
-                        <p>Public gists : </p>
-                        <p>gists</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Public repos : </p>
+                            <p>repos</p>
+                        </div>
+                        <div class="float-right col-md-6">
+                            <p>Public gists : </p>
+                            <p>gists</p>
+                        </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
