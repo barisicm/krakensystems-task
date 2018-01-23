@@ -1,8 +1,10 @@
 function initialize() {
 
-    generateAndInsertPopupHtml($("#preloader"));
-    fetchUsersAndGenerateHtml(0);
+    //Initialise popup
+    generatePopupHtml($("#preloader"));
+    fetchUsers(0);
 
+    //Click Listeners
     var popupActive=false;
     $(".popup-header-container").click(function(){
         if(!popupActive){
@@ -14,41 +16,58 @@ function initialize() {
         }
     });
 
-    $(".user-selected-js").click(function(){
-
+    $(".user-link-js").click(function(){
+        fetchUser(this.text());
     });
 
+    //Scroll Listeners
     var popupList = $('.users-list');
     popupList.scroll(function () {
-   
-        //TODO:: THIS !!!!
-        if($(this).scrollTop() + $(this).innerHeight() == $(this)[0].scrollHeight-1) {
-                var lastUser = $('.user-selected-js > a').length;
-                fetchUsersAndGenerateHtml(lastUser);
+
+        var scrollTop = $(this).scrollTop();
+        var innerHeight = $(this).innerHeight();
+        var scrollHeight = $(this)[0].scrollHeight;
+
+        if(scrollTop + innerHeight >= scrollHeight - 1) {
+            var lastUser = $('.user-selected-js > a').length;
+            fetchUsers(lastUser);
+            $(this).scrollTop(scrollHeight - innerHeight);
         }
     });
 }
 
-function generateAndInsertPopupHtml(targetElement){
+function generatePopupHtml(targetElement){
     $(targetElement).after(
     `<div id="users" class="row-full-width">
         <div class="github-users">
             <div class="popup-header-container">
                 <h3>GitHub Users</h3>
             </div>
-            <div class="popup-list-container">
+            <div class="popup-list-container" style="display:none;">
                 <ul class="users-list">
                 </ul>
             </div>
-            <div class="popup-user-details">
-                <p>whatever</p>
+            <div class="popup-user-details" style="display:block;">
+                <div class="user-details-inner-container">
+                    <img class="user-image" src="https://avatars0.githubusercontent.com/u/1?v=4"></img>
+                    <h3>Stats</h3>
+                    <div>
+                        <p>Public repos : </p>
+                        <p>repos</p>
+                    </div>
+                    <div>
+                        <p>Public gists : </p>
+                        <p>gists</p>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>`
     );
 }
 
-function fetchUsersAndGenerateHtml(lastUserIndex){
+function fetchUsers(lastUserIndex){
     var url="https://api.github.com/users"
 
     if(lastUserIndex == undefined){
@@ -62,25 +81,39 @@ function fetchUsersAndGenerateHtml(lastUserIndex){
         url: url,
         method: "GET",
         success: function(data, status, jqXHR){
-            console.log(data);
-            console.log(status);
-            console.log(jqXHR);
-
-            var htmlUserItems="";
-            console.log(data);
-            data.forEach(element => {
-                var userItem = `<li class="user-selected-js">
-                                    <a href="empty" id="`+ element.id +`" index="`+ "" +`">`+ element.login +`</a>
-                                </li>`;
-                htmlUserItems = htmlUserItems + userItem;
-            });
-            
-            $(".users-list").append(htmlUserItems).fadeIn();
+            appendUsersToList(data,".users-list");
         }
     });
 }
 
-function fetchSingleUser() {
+function appendUsersToList(data, targetElement){
+    var htmlUserItems="";
+
+    data.forEach(element => 
+    {
+        var userItem = `
+        <li class="user-selected-js">
+            <a href="" class="user-link-js" >`+ element.login +`</a>
+        </li>`;
+        htmlUserItems = htmlUserItems + userItem;
+    });
+            
+    $(targetElement).append(htmlUserItems).fadeIn();
+}
+
+function fetchUser(username) {
+    var url = "https://api.github.com/users/" + username;
+
+    $.ajax({
+        url: url,
+        method: "GET",
+        success: function(data, status, jqXHR){
+            showUserDetails(data);
+        }
+    })
+}
+
+function showUserDetails(data){
 
 }
 

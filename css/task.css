@@ -1,16 +1,7 @@
-.github-users{
-    background-color: white;
-    min-height: 100px;
-    min-width: 300px;
-    float: right;
-    position: relative;
-    bottom: 50px;
-    right: 15%;
-    border: 2px solid #24292e;
-    border-top-left-radius: .5rem;
-    border-top-right-radius: .5rem;
-}
 
+/*
+* Animations
+*/
 @keyframes animateBackground{
     from{background-color: #24292e;}
     to {background-color: white}
@@ -22,6 +13,19 @@
 @keyframes animateTextToWhite{
     from{color: #24292e}
     to{color: white}
+}
+
+.github-users{
+    background-color: white;
+    min-height: 100px;
+    min-width: 300px;
+    float: right;
+    position: relative;
+    bottom: 50px;
+    right: 15%;
+    border: 2px solid #24292e;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
 }
 
 .popup-header-container{
