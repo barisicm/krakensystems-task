@@ -1,7 +1,7 @@
-
 /*
 * Animations
 */
+
 @keyframes animateBackground{
     from{background-color: #24292e;}
     to {background-color: white}
@@ -14,6 +14,10 @@
     from{color: #24292e}
     to{color: white}
 }
+
+/*
+*   Main Popup Styles
+*/
 
 .github-users{
     background-color: white;
@@ -28,10 +32,13 @@
     border-top-right-radius: .5rem;
 }
 
+/*
+*   Popup Header Styles
+*/
+
 .popup-header-container{
     background-color: #24292e;
     padding: 10px;
-    margin-bottom: 0px;
     cursor: pointer;
 }
 .popup-header-container:hover{
@@ -44,42 +51,30 @@
     animation-name: animateTextToDark;
     animation-duration: 0.5s;
     color: #24292e;
-    margin-bottom: 0px;
 }
 .popup-header-container > h3 {
     display: inline-block;
-    width: 70%;
+    width: 90%;
     color: white;
     margin-bottom: 0px;
 }
 
-
+/*
+*   Popup List Styles
+*/
 
 .popup-list-container{
-    max-height: 250px;
+    max-height: 300px;
 }
-.row-full-width{
-    width: 100%;
-    position: fixed;
-    bottom: 0px;
-    height: 0px;
-    z-index: 10000;
-}
-
-
-
 .users-list{
-    margin-bottom: 10px;
     margin-left: 0px;
-    list-style: none;
-    max-height: 265px;
+    max-height: 315px;
     overflow: scroll;
 }
 .users-list > li {
     color: #24292e;
     border-bottom:1px solid #24292e; 
     background: white;
-    /* Old browsers */
     background: linear-gradient(to right, #24292e 50%, white 50%);
     background-size: 200% 100%;
     background-position:right bottom;
@@ -98,28 +93,45 @@
     color: inherit;
 }
 
+/*
+*   User Details Styles
+*/
 
-/*Pravila za novi tab*/
 .popup-user-details{
-    display: none;
+    display: block;
     min-height: 300px;
     margin: 0px;
 }
-
 .user-details-inner-container{
     text-align: center;
 }
-
 .user-image{
     width: 100px;
     border-radius: 5px;
 }
 
+/*
+*   Helper Classes
+*/
 
+.row-full-width{
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    height: 0px;
+    z-index: 10000;
+}
 .no-margin{
     margin: 0;
 }
-
 .float-right{
     float: right;
+}
+.hidden{
+    display: none;
+}
+.sm-margin-bottom > div > p{
+    font-weight: bold;
+    margin-bottom: 0px;
+    margin-top: 10px;
 }
